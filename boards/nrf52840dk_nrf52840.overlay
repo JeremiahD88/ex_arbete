@@ -1,0 +1,14 @@
+&spi3 {
+    status = "okay";
+    cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>; /* D10 */
+    mcp2515: mcp2515@0 {
+        status = "okay";
+        compatible = "microchip,mcp2515";
+        reg = <0>; // Chip select address
+        osc-freq = <10000000>; // Frequency of the external oscillator in Hz
+        sample-point = <750>;
+        int-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>; // GPIO pin for the MCP2515 interrupt
+        spi-max-frequency = <10000000>; // Maximum SPI clock frequency in Hz
+        bus-speed = <500000>; // Initial CAN bus speed in bit/s
+    };
+};
